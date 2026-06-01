@@ -34,8 +34,12 @@ def render(act: str, slots: dict = None) -> str:
         return questions.get(slot, f"{slot} সম্পর্কে বলুন।")
 
     if act == "confirm":
-        pairs = ", ".join(f"{k}={v}" for k, v in slots.items())
-        return f"আপনার {pairs} — এটা কি ঠিক আছে?"  # Your [slot=value...] — is that correct?
+        parts = []
+        labels = {"symptom": "সমস্যা", "body_part": "স্থান", "duration": "সময়কাল", "severity": "মাত্রা"}
+        for k, v in slots.items():
+            label = labels.get(k, k)
+            parts.append(f"{label}: {v}")
+        return "আপনার " + ", ".join(parts) + " — এটা কি ঠিক আছে?"
 
     if act == "affirm":
         return "হ্যাঁ।"  # Yes.
