@@ -117,3 +117,17 @@ Ankur Bapna, Neha Nayak, Larry Heck.
 "Building a Conversational Agent Overnight with Dialogue Self-Play."
 arXiv:1801.04871, Google AI, 2018.
 ```
+
+---
+
+## Dataset references
+
+```
+Bengali Medical Dataset (patient statements, NER tags, specialist routing).
+Shashwat Tiwari, Kaggle. CC BY 4.0.
+https://www.kaggle.com/datasets/shashwatwork/bengali-medical-dataset
+
+Assorted Medicine Dataset of Bangladesh (21,715 medicines, generics, indications).
+Ahmed Shahriar Sakib, Kaggle. CC0 (Public Domain).
+https://www.kaggle.com/datasets/ahmedshahriarsakib/assorted-medicine-dataset-of-bangladesh
+```
