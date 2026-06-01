@@ -1,0 +1,87 @@
+# M2M Self-Play Phase 1 flow (medical domain) - larger fonts/icons variant
+# Faithful to Shah et al. 2018, arXiv:1801.04871
+
+direction: right
+
+vars: {
+  d2-config: {
+    layout-engine: dagre
+  }
+}
+
+schema: "Task Schema" {
+  icon: https://api.iconify.design/logos:python.svg
+  label.near: bottom-center
+  width: 240
+  height: 200
+  style.fill: "#eef2ff"
+  style.font-size: 34
+}
+
+scenario: "Scenario\nGenerator" {
+  icon: https://api.iconify.design/mdi:dice-multiple.svg
+  label.near: bottom-center
+  width: 240
+  height: 200
+  style.fill: "#eef2ff"
+  style.font-size: 34
+}
+
+loop: "Self-Play Loop" {
+  style.fill: "#f8fafc"
+  style.stroke: "#475569"
+  style.font-size: 38
+
+  bu: "B_U\nUser Bot" {
+    icon: https://api.iconify.design/mdi:account-voice.svg
+    label.near: bottom-center
+    width: 240
+    height: 200
+    style.fill: "#dcfce7"
+    style.font-size: 34
+  }
+
+  tmpl: "Template\nGenerator" {
+    icon: https://api.iconify.design/mdi:format-quote-close.svg
+    label.near: bottom-center
+    width: 240
+    height: 200
+    style.fill: "#fef9c3"
+    style.font-size: 34
+  }
+
+  bs: "B_S\nSystem Bot\n(FSM)" {
+    icon: https://api.iconify.design/mdi:state-machine.svg
+    label.near: bottom-center
+    width: 240
+    height: 200
+    style.fill: "#dbeafe"
+    style.font-size: 34
+  }
+
+  bu -> tmpl: "act" { style.font-size: 30 }
+  tmpl -> bs: "utterance" { style.font-size: 30 }
+  bs -> bu: "request" { style.font-size: 30 }
+}
+
+outline: "Dialogue\nOutline" {
+  icon: https://api.iconify.design/mdi:script-text-outline.svg
+  label.near: bottom-center
+  width: 240
+  height: 200
+  style.fill: "#f1f5f9"
+  style.font-size: 34
+}
+
+json: "dialogues.json" {
+  shape: cylinder
+  width: 220
+  height: 180
+  style.fill: "#e2e8f0"
+  style.font-size: 32
+}
+
+schema -> scenario: "T = (S, C)" { style.font-size: 30 }
+scenario -> loop: "goal + persona" { style.font-size: 30 }
+loop -> outline: "turns" { style.font-size: 30 }
+outline -> json: "save" { style.font-size: 30 }

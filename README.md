@@ -3,7 +3,7 @@
 Implementation of **"Building a Conversational Agent Overnight with Dialogue Self-Play"**
 Shah et al., Google AI, 2018 ([arXiv:1801.04871](https://arxiv.org/abs/1801.04871))
 
-![M2M self-play flow](./diagrams/out/m2m-flow.svg)
+![M2M self-play flow](./diagrams/out/m2m-flow-v2.png)
 
 ---
 
@@ -70,6 +70,16 @@ Each dialogue follows the format of Table 5 in the paper, with annotation and te
 [S] good_bye()                        | "ভালো থাকুন।"
 ```
 
+### Sample run
+
+Output from `python run.py --n 10` (first four generated dialogues):
+
+![Sample dialogues 1 and 2](./output-ss/Screenshot%20from%202026-06-01%2017-22-25.png)
+
+![Sample dialogues 3 and 4](./output-ss/Screenshot%20from%202026-06-01%2017-22-47.png)
+
+> Note: the Bengali text looks broken/disjointed in these screenshots only because of how the terminal font renders Bengali conjuncts and diacritics. The underlying strings and the saved `output/dialogues.json` are correct, well-formed Bengali.
+
 ---
 
 ## File structure
@@ -84,6 +94,7 @@ self_play.py    runs B_U and B_S, returns a dialogue outline
 run.py          CLI entry point
 diagrams/       D2 source + rendered SVG/PNG of the flow above
 output/         generated dialogues saved here as JSON
+output-ss/      terminal screenshots of a sample run
 ```
 
 ---
