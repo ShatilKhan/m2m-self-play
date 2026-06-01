@@ -1,4 +1,4 @@
-# Self-play loop — runs B_U and B_S to generate one dialogue outline
+# Self-play loop: runs B_U and B_S to generate one dialogue outline
 # Implements Section 2.2 of Shah et al. 2018: outline generation via self-play
 #
 # F1(T) → O = {oi}                     [Equation 3]

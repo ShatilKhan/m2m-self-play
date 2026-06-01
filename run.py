@@ -1,4 +1,4 @@
-# CLI entry point — generate N dialogue outlines and save to output/dialogues.json
+# CLI entry point: generate N dialogue outlines and save to output/dialogues.json
 # Usage: python run.py --n 5
 
 import argparse
@@ -21,7 +21,7 @@ def print_dialogue(idx: int, outline: list):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="M2M Self-Play — Medical Domain")
+    parser = argparse.ArgumentParser(description="M2M Self-Play: Medical Domain")
     parser.add_argument("--n", type=int, default=3, help="Number of dialogues to generate")
     args = parser.parse_args()
 
