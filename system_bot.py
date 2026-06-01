@@ -1,4 +1,4 @@
-# B_S — Finite State Machine Health Assistant
+# B_S: Finite State Machine Health Assistant
 # Implements the system bot described in Section 3 of Shah et al. 2018.
 # B_S is modelled as a finite state machine (Hopcroft et al. 2006) which
 # encodes a set of task-independent rules for constructing system turns.
@@ -60,11 +60,11 @@ class SystemBot:
         if user_act == "affirm" and self.state == "CONFIRM":
             self.state = "NOTIFY_SUCCESS"
 
-        # Absorb negate — go back to re-request the first unfilled slot
+        # Absorb negate: go back to re-request the first unfilled slot
         if user_act == "negate" and self.state == "CONFIRM":
             self.state = self._next_unfilled_state()
 
-        # Absorb greeting — move to first request
+        # Absorb greeting: move to first request
         if user_act == "greeting" and self.state == "GREET":
             self.state = "REQUEST_SYMPTOM"
 
@@ -82,18 +82,18 @@ class SystemBot:
         elif self.state in STATE_TO_SLOT:
             slot = STATE_TO_SLOT[self.state]
             if slot in self.filled:
-                # Already have this slot — advance
+                # Already have this slot, advance
                 self.state = self._advance_state()
                 return self._respond()
             act = "request"
             slots = {slot: "?"}
-            # Advance state after requesting — next call will be for next slot
+            # Advance state after requesting: next call will be for next slot
             self.state = self._advance_state()
 
         elif self.state == "CONFIRM":
             act = "confirm"
             slots = dict(self.filled)
-            # Don't advance — wait for affirm/negate from user
+            # Don't advance, wait for affirm/negate from user
 
         elif self.state == "NOTIFY_SUCCESS":
             specialist = get_specialist(

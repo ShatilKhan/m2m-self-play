@@ -1,9 +1,9 @@
-# B_U — Agenda-based User Simulator
+# B_U: Agenda-based User Simulator
 # Implements the user bot described in Section 3 of Shah et al. 2018,
 # based on the agenda-based user simulation of Schatzmann et al. (2007).
 #
 # How it works:
-#   1. At init, convert the user goal into an agenda — an ordered list of
+#   1. At init, convert the user goal into an agenda, an ordered list of
 #      (act, slots) pairs representing what the user needs to communicate.
 #   2. Each turn: pop the top item off the agenda and speak it.
 #   3. If B_S requests a slot that is in the user's goal, push an inform act.

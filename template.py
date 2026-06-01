@@ -1,9 +1,9 @@
-# Template utterance generator — maps dialogue act annotations to template strings
+# Template utterance generator: maps dialogue act annotations to template strings
 # Implements the template utterance generator described in Section 2.2 of Shah et al. 2018
 # Covers all 15 dialogue acts from Table 4 of the paper.
 #
 # Each function takes a slot-value dict and returns a plain template string.
-# This is the bridge between symbolic annotations and text — what crowd workers
+# This is the bridge between symbolic annotations and text, what crowd workers
 # would later paraphrase into natural language in Phase 2.
 
 
@@ -39,7 +39,7 @@ def render(act: str, slots: dict = None) -> str:
         for k, v in slots.items():
             label = labels.get(k, k)
             parts.append(f"{label}: {v}")
-        return "আপনার " + ", ".join(parts) + " — এটা কি ঠিক আছে?"
+        return "আপনার " + ", ".join(parts) + ", এটা কি ঠিক আছে?"
 
     if act == "affirm":
         return "হ্যাঁ।"  # Yes.

@@ -1,4 +1,4 @@
-# Scenario generator — samples si = (pi, gi) from the task schema
+# Scenario generator: samples si = (pi, gi) from the task schema
 # Section 2.2 of Shah et al. 2018:
 #   pi = user profile (personality vector)
 #   gi = user goal (slot-value pairs the user wants to achieve)
@@ -34,5 +34,5 @@ def sample_personality() -> dict:
 
 
 def sample_scenario() -> tuple:
-    """Returns (goal, personality) — the full scenario si = (pi, gi)."""
+    """Returns (goal, personality): the full scenario si = (pi, gi)."""
     return sample_goal(), sample_personality()

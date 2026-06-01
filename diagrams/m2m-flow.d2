@@ -1,0 +1,59 @@
+# M2M Self-Play Phase 1 flow (medical domain implementation)
+# Faithful to Shah et al. 2018, arXiv:1801.04871
+
+direction: right
+
+schema: "Task Schema\n(slots + values)" {
+  icon: https://api.iconify.design/logos:python.svg
+  label.near: bottom-center
+  style.fill: "#eef2ff"
+}
+
+scenario: "Scenario Generator\nsamples goal + personality" {
+  icon: https://api.iconify.design/mdi:dice-multiple.svg
+  label.near: bottom-center
+  style.fill: "#eef2ff"
+}
+
+loop: "Self-Play Loop" {
+  style.fill: "#f8fafc"
+  style.stroke: "#475569"
+
+  bu: "B_U  User Bot\nAgenda Stack\npops (act, slots)" {
+    icon: https://api.iconify.design/mdi:account-voice.svg
+    label.near: bottom-center
+    style.fill: "#dcfce7"
+  }
+
+  tmpl: "Template Generator\nannotation + utterance" {
+    icon: https://api.iconify.design/mdi:format-quote-close.svg
+    label.near: bottom-center
+    style.fill: "#fef9c3"
+  }
+
+  bs: "B_S  System Bot\nFSM: GREET to COLLECT\nto CONFIRM to ROUTE" {
+    icon: https://api.iconify.design/mdi:state-machine.svg
+    label.near: bottom-center
+    style.fill: "#dbeafe"
+  }
+
+  bu -> tmpl: "act"
+  tmpl -> bs: "utterance"
+  bs -> bu: "request / confirm"
+}
+
+outline: "Dialogue Outline\n(Table 5 format)" {
+  icon: https://api.iconify.design/mdi:script-text-outline.svg
+  label.near: bottom-center
+  style.fill: "#f1f5f9"
+}
+
+json: "output/\ndialogues.json" {
+  shape: cylinder
+  style.fill: "#e2e8f0"
+}
+
+schema -> scenario: "T = (S, C)"
+scenario -> loop: "goal gi\npersonality pi"
+loop -> outline: "turns"
+outline -> json: "save"
